@@ -1,17 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDom from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {books} from './books';
+import Book from './Book';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+// stateless functional Component
+// always return jsx
+// jsx rules
+// always return single element
+// div / section / article / React.Fragment
+// user camelcase on html attributes
+// className instead of class for css
+
+//setup vars
+
+const BookList = () => (
+  <section className="book-list">{
+    books.map(book =>
+      (<Book key={book.id} {...book}>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quod doloremque blanditiis quidem consequuntur dicta iste debitis excepturi voluptates, rerum nesciunt doloribus inventore harum numquam ab ipsum nostrum saepe? Accusantium!</p>
+      </Book>))
+  }</section>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//const Greeting = ()=>  React.createElement('div', {}, React.createElement('h1', {}, 'Hello'));
+ReactDom.render(<BookList />, document.getElementById('root'));
